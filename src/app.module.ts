@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CatsController } from './cats/cats.controller';
 
 const env = process.env.NODE_ENV || 'local';
 
@@ -11,7 +12,7 @@ const env = process.env.NODE_ENV || 'local';
       envFilePath: `.env.${env}`,
     })
   ],
-  controllers: [AppController],
+  controllers: [AppController, CatsController],
   providers: [AppService],
 })
 export class AppModule {}
