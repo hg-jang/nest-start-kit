@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Cat } from 'src/types/Cat.type';
+import { Cat } from 'src/types/Models.type';
 
 @Injectable()
 export class CatsService {
@@ -16,6 +16,12 @@ export class CatsService {
 
   findOneById(id: number) {
     return this.cats.find((c) => c.id === id)
+  }
+
+  getNewId() {
+    const maxId =  Math.max(...this.cats.map((c) => c.id))
+
+    return maxId + 1;
   }
   
 }
