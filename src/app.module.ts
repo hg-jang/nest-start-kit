@@ -25,7 +25,6 @@ const env = process.env.NODE_ENV || 'local';
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(LoggerMiddleware)
-      .forRoutes('cats')
+      .apply(LoggerMiddleware).forRoutes('*')
   }
 }
