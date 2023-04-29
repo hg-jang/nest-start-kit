@@ -19,7 +19,7 @@ export class CatsService {
   }
 
   getNewId() {
-    const maxId =  Math.max(...this.cats.map((c) => c.id))
+    const maxId =  Math.max(...this.cats.map((c) => c.id)) || 0
 
     return maxId + 1;
   }
