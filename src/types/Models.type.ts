@@ -7,6 +7,4 @@ export type Cat = {
   birthday: string
 
   sex: 'male' | 'female'
-
-  isNeutralized: boolean
 }
