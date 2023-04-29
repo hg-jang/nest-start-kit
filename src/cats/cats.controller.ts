@@ -28,7 +28,7 @@ export class CatsController {
   /**
    * Returns all cats
    */
-  @Get()
+  @Get('all')
   async findAll() {
     return this.catsService.findAll();
   }
