@@ -1,3 +1,3 @@
-import { Cat } from '../types/Models.type'
+import { Cat } from '../types/Models.type';
 
-export type CreateCatDto = Omit<Cat, 'id'>
+export type CreateCatDto = Omit<Cat, 'id'>;

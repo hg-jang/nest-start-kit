@@ -1,10 +1,10 @@
 export type Cat = {
-  id: number
+  id: number;
 
-  name: string
+  name: string;
 
   /** yyyy-MM-dd */
-  birthday: string
+  birthday: string;
 
-  sex: 'male' | 'female'
-}
+  sex: 'male' | 'female';
+};

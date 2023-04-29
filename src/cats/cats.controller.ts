@@ -4,25 +4,20 @@ import { CatsService } from './cats.service';
 
 @Controller('cats')
 export class CatsController {
-
-  constructor(
-    private catsService: CatsService,
-  ) {}
+  constructor(private catsService: CatsService) {}
 
   /**
    * Add new cat
    */
   @Post()
-  async create(
-    @Body() createCatDto: CreateCatDto
-  ) {
-    const id = this.catsService.getNewId()
+  async create(@Body() createCatDto: CreateCatDto) {
+    const id = this.catsService.getNewId();
     const newCat = {
       ...createCatDto,
       id,
-    }
+    };
 
-    this.catsService.create(newCat)
+    this.catsService.create(newCat);
   }
 
   /**
@@ -37,10 +32,7 @@ export class CatsController {
    * Returns cat by id
    */
   @Get(':id')
-  findOneById(
-    @Param('id') id: string
-  ) {
-    return this.catsService.findOneById(parseInt(id))
+  findOneById(@Param('id') id: string) {
+    return this.catsService.findOneById(parseInt(id));
   }
-
 }
