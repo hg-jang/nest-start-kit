@@ -1,10 +1,13 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, UseFilters } from '@nestjs/common';
+import { HttpExceptionFilter } from 'src/filters/http-exception/http-exception.filter';
 import { CreateCatDto } from './cats.dto';
 import { CatsService } from './cats.service';
 
 @Controller('cats')
 export class CatsController {
-  constructor(private catsService: CatsService) {}
+  constructor(
+    private catsService: CatsService
+  ) {}
 
   /**
    * Add new cat
@@ -32,7 +35,17 @@ export class CatsController {
    * Returns cat by id
    */
   @Get(':id')
-  findOneById(@Param('id') id: string) {
+  findOneById(
+    @Param('id') id: string
+    ) {      
     return this.catsService.findOneById(parseInt(id));
+  }
+
+  @Get('species/:species')
+  findOneBySpecies(
+    @Param('species') species: string
+  ) {
+    console.log('species::', species)
+    throw new HttpException("Can't find by species", HttpStatus.BAD_REQUEST)
   }
 }
