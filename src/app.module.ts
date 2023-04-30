@@ -7,7 +7,7 @@ import { AppService } from './app.service';
 
 import { CatsModule } from './cats/cats.module';
 
-import { LoggerMiddleware } from './middlewares/logger/logger.middleware';
+import { LoggerMiddleware } from './core/middlewares/logger/logger.middleware';
 
 const env = process.env.NODE_ENV || 'local';
 
