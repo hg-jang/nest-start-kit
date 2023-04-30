@@ -1,5 +1,4 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, UseFilters } from '@nestjs/common';
-import { HttpExceptionFilter } from 'src/filters/http-exception/http-exception.filter';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Res, UseFilters } from '@nestjs/common';
 import { CreateCatDto } from './cats.dto';
 import { CatsService } from './cats.service';
 
@@ -45,7 +44,6 @@ export class CatsController {
   findOneBySpecies(
     @Param('species') species: string
   ) {
-    console.log('species::', species)
     throw new HttpException("Can't find by species", HttpStatus.BAD_REQUEST)
   }
 }
