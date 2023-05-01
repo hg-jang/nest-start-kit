@@ -7,7 +7,9 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from 'src/core/guards/auth/auth.guard';
 import { CreateCatDto } from './cats.dto';
 import { CatsService } from './cats.service';
 
@@ -19,6 +21,7 @@ export class CatsController {
    * Add new cat
    */
   @Post()
+  @UseGuards(new AuthGuard())
   async create(@Body() createCatDto: CreateCatDto) {
     const id = this.catsService.getNewId();
     const newCat = {
