@@ -22,12 +22,16 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const req = ctx.getRequest<Request>();
 
     const path = httpAdapter.getRequestUrl(ctx.getRequest());
-    const exceptionMessage = exception.getResponse() as string;
-    const statusCode =
-      exception instanceof HttpException
-        ? exception.getStatus()
-        : HttpStatus.INTERNAL_SERVER_ERROR;
+    const statusCode = exception instanceof HttpException
+      ? exception.getStatus()
+      : HttpStatus.INTERNAL_SERVER_ERROR;
     const statusCodeMessage = HttpStatus[statusCode] || 'Internal Server Error';
+
+    let exceptionMessage = exception.getResponse();
+    if(typeof exceptionMessage === 'object') {
+      // @ts-ignore
+      exceptionMessage = exceptionMessage.message;
+    }
 
     res.status(statusCode).json({
       state: 'error',
