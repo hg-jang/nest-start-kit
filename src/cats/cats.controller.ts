@@ -5,6 +5,7 @@ import {
   HttpException,
   HttpStatus,
   Param,
+  ParseIntPipe,
   Post,
 } from '@nestjs/common';
 import { CreateCatDto } from './cats.dto';
@@ -40,7 +41,7 @@ export class CatsController {
    * Returns cat by id
    */
   @Get(':id')
-  findOneById(@Param('id') id: string) {
+  findOneById(@Param('id', ParseIntPipe) id: string) {
     return this.catsService.findOneById(parseInt(id));
   }
 
